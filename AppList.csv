@@ -1,0 +1,12 @@
+AppOrder,Name,Default,NSXTags,VMTags,AddToEmail,Location
+0,SSL WinRM,TRUE,App-WinRM,WinRM,russell.hamker@gmail.com,\Apps\WinRM
+1,Hard Drive Config,TRUE,,,,\Apps\HDConfig
+2,MS SQL 2016,,SQL,,russell.hamker@gmail.com,\Apps\SQL_2016
+3,IIS,,"IIS,SQL_Agent","IIS,SQL_Agent",russell.hamker@gmail.com,\Apps\IIS
+4,Fileserver,,Fileserver,,,\Apps\Fileserver
+5,SCOM,,SCOM,,,\Apps\SCOM
+6,SCCM,,SCCM,,,\Apps\SCCM
+7,LogRhythm,,LogRhythm,,,\Apps\LogRhythm
+8,LogInsight,TRUE,App-LogInsight,,,\Apps\LogInsight
+9,Symantec,TRUE,App-Symantec,,,\Apps\Symantec
+10,McAfee,,McAfee,,,\Apps\McAfee
