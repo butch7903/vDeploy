@@ -9,7 +9,8 @@ $INSTALLSTARTTIMESW = [Diagnostics.Stopwatch]::StartNew()
 $OUTPUT = Invoke-Command -Session $SESSION -ScriptBlock {
 	CD C:\Apps\LogInsight
 	C:
-	$INSTALLER = Get-ChildItem -Path C:\Apps\LogInsight
+	$INSTALLER = Get-ChildItem -Path C:\Apps\LogInsight | Where {$_.Name -like "*.msi"} | Select Fullname
+	$INSTALLER = $INSTALLER.FullName
 	$INSTALL = "Start-Process -FilePath $INSTALLER -ArgumentList 'SERVERHOST=LOGINSIGHT.hamker.local AUTOUPDATE=YES LIAGENT_SSL=YES /quiet' -Wait"
 	$INSTALLOUTPUT = Invoke-Expression $INSTALL
 	RETURN $INSTALLOUTPUT
