@@ -3096,7 +3096,7 @@ ELSE{
 	##Create Temporary Customization Spec with Static IP Information
 	#Reference https://blogs.vmware.com/PowerCLI/2014/06/working-customization-specifications-powercli-part-2.html
 	$TEMPOSCUSTOMIZATIONSPEC = New-OSCustomizationSpec -Spec $OSCUSTOMIZATION -Type NonPersistent
-	$TEMPOSCUSTOMIZATIONSPEC | Set-OSCustomizationSpec -GUIRunOnce $GUIRUNONCE_SCRIPT1 -AutoLogonCount 2
+	#$TEMPOSCUSTOMIZATIONSPEC | Set-OSCustomizationSpec -GUIRunOnce $GUIRUNONCE_SCRIPT1 -AutoLogonCount 2
 	$nicMapping = Get-OSCustomizationNicMapping -OSCustomizationSpec $TEMPOSCUSTOMIZATIONSPEC
 	$nicMapping | Set-OSCustomizationNicMapping -IpMode UseStaticIP -IpAddress $IP -SubnetMask $SUBNET -DefaultGateway $DG -DNS $DNS1,$DNS2
 	##Create VM using Static IP Settings
