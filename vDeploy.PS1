@@ -2,8 +2,8 @@
     .NOTES
 	===========================================================================
 	Created by:		Russell Hamker
-	Date:			January 28, 2018
-	Version:		2.0
+	Date:			March 9, 2020
+	Version:		3.0
 	Twitter:		@butch7903
 	GitHub:			https://github.com/butch7903
 	===========================================================================
@@ -960,12 +960,16 @@ $DatacentercomboBox.Items.AddRange($DATACENTERS)
 $DatacentercomboBox.Text = $DATACENTER
 $DatacentercomboBox_SelectedIndexChanged = {
 	$ClusterComboBox.Enabled = $true
-	$CLUSTERS = Get-Datacenter $DatacentercomboBox.text | Get-Cluster * | Select NAME
-	$CLUSTERS = $CLUSTERS.NAME
-	$CLUSTERS += "*No Cluster"
-	$CLUSTERS = $CLUSTERS | Sort-Object
+	$CLUSTERS = (Get-Datacenter ($DatacentercomboBox).text | Get-Cluster * | Select NAME).Name
+	$CLUSTERLIST = @()
+	$CLUSTERLIST += $CLUSTERS
+	$CLUSTERLIST += "*No Cluster"
+	#$CLUSTERS = $CLUSTERS | Sort-Object
+	$CLUSTERLIST = $CLUSTERLIST | Sort-Object
+	#Write-HOST "Clusters include:"
+	#Write-Host "$CLUSTERLIST"
 	$ClusterComboBox.Items.Clear()
-	$ClusterComboBox.Items.AddRange($CLUSTERS)
+	$ClusterComboBox.Items.AddRange($CLUSTERLIST)
 	$ClusterComboBox.Text = ""
 	$ClusterComboBox.EndUpdate
 	$HostComboBox.Items.Clear()
